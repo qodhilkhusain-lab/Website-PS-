@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paket Rental | TriGame</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a href="/" class="brand"><span>EC</span>ROMER</a>
+      <button class="nav-toggle" aria-label="Buka menu">☰</button>
+      <div class="nav-menu">
+        <a href="/">Beranda</a>
+        <a href="/catalog.html">Paket</a>
+        <a href="/booking.html">Booking</a>
+        <a href="/admin.html">Admin</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container page-space">
+    <div class="page-title">
+      <p class="eyebrow">Katalog Rental</p>
+      <h1>Pilih paket sesuai kebutuhan mainmu</h1>
+      <p>Cari paket PS4, PS5, atau ruang VIP. Harga ditampilkan per jam.</p>
+    </div>
+
+    <div class="toolbar">
+      <input type="search" id="packageSearch" placeholder="Cari paket, konsol, atau game...">
+      <select id="priceFilter">
+        <option value="all">Semua harga</option>
+        <option value="15000">≤ Rp15.000/jam</option>
+        <option value="25000">≤ Rp25.000/jam</option>
+        <option value="35000">≤ Rp35.000/jam</option>
+      </select>
+    </div>
+
+    <section id="packageList" class="packages-grid"></section>
+    <div id="emptyState" class="empty-state hidden">Paket tidak ditemukan.</div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 Ecromer Rental PS</p>
+      <p>JavaScript + Express.js</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/catalog.js"></script>
+</body>
+</html>

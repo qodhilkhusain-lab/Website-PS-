@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking | TriGame Rental PS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a href="/" class="brand"><span>EC</span>ROMER</a>
+      <button class="nav-toggle" aria-label="Buka menu">☰</button>
+      <div class="nav-menu">
+        <a href="/">Beranda</a>
+        <a href="/catalog.html">Paket</a>
+        <a href="/booking.html">Booking</a>
+        <a href="/admin.html">Admin</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container page-space booking-layout">
+    <section>
+      <div class="page-title left">
+        <p class="eyebrow">Reservasi Online</p>
+        <h1>Form Booking Rental PS</h1>
+        <p>Isi data di bawah ini. Total harga akan dihitung otomatis berdasarkan paket dan durasi.</p>
+      </div>
+
+      <form id="bookingForm" class="form-card">
+        <div class="form-row">
+          <label for="name">Nama Pelanggan</label>
+          <input type="text" id="name" name="name" placeholder="Contoh: Andi Saputra" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Nomor WhatsApp</label>
+          <input type="tel" id="phone" name="phone" placeholder="08xxxxxxxxxx" required>
+        </div>
+        <div class="form-row">
+          <label for="packageId">Pilih Paket</label>
+          <select id="packageId" name="packageId" required>
+            <option value="">Memuat paket...</option>
+          </select>
+        </div>
+        <div class="two-columns">
+          <div class="form-row">
+            <label for="date">Tanggal Rental</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div class="form-row">
+            <label for="startTime">Jam Mulai</label>
+            <input type="time" id="startTime" name="startTime" required>
+          </div>
+        </div>
+        <div class="two-columns">
+          <div class="form-row">
+            <label for="duration">Durasi / Jam</label>
+            <input type="number" id="duration" name="duration" min="1" max="24" value="2" required>
+          </div>
+          <div class="form-row">
+            <label for="serviceType">Jenis Layanan</label>
+            <select id="serviceType" name="serviceType" required>
+              <option value="ambil">Ambil di tempat</option>
+              <option value="antar">Antar ke alamat + Rp15.000</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row" id="addressRow">
+          <label for="address">Alamat</label>
+          <textarea id="address" name="address" rows="3" placeholder="Isi alamat lengkap jika memilih layanan antar"></textarea>
+        </div>
+        <div class="form-row">
+          <label for="notes">Catatan Tambahan</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Contoh: butuh 4 stik, game FIFA, dll."></textarea>
+        </div>
+        <button type="submit" class="btn primary full">Kirim Booking</button>
+      </form>
+    </section>
+
+    <aside class="summary-card">
+      <p class="eyebrow">Ringkasan</p>
+      <h2 id="summaryPackage">Belum memilih paket</h2>
+      <div class="summary-line"><span>Harga / jam</span><strong id="summaryPrice">Rp0</strong></div>
+      <div class="summary-line"><span>Durasi</span><strong id="summaryDuration">2 jam</strong></div>
+      <div class="summary-line"><span>Biaya antar</span><strong id="summaryDelivery">Rp0</strong></div>
+      <div class="summary-total"><span>Total</span><strong id="summaryTotal">Rp0</strong></div>
+      <div id="bookingAlert" class="alert hidden"></div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 Ecromer Rental PS</p>
+      <p>Booking tersimpan ke JSON melalui Express API.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/booking.js"></script>
+</body>
+</html>

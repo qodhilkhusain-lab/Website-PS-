@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | TriGame Rental PS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a href="/" class="brand"><span>THRI</span>GAME</a>
+      <button class="nav-toggle" aria-label="Buka menu">☰</button>
+      <div class="nav-menu">
+        <a href="/">Beranda</a>
+        <a href="/catalog.html">Paket</a>
+        <a href="/booking.html">Booking</a>
+        <a href="/admin.html">Admin</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container page-space">
+    <div class="page-title left">
+      <p class="eyebrow">Dashboard Admin</p>
+      <h1>Kelola Booking Rental PS</h1>
+      <p>Halaman ini dibuat untuk dokumentasi tugas. Pada versi produksi, tambahkan login admin.</p>
+    </div>
+
+    <section class="admin-stats">
+      <div class="stat-card"><span>Total Booking</span><strong id="totalBookings">0</strong></div>
+      <div class="stat-card"><span>Menunggu</span><strong id="pendingBookings">0</strong></div>
+      <div class="stat-card"><span>Omzet Potensial</span><strong id="totalRevenue">Rp0</strong></div>
+    </section>
+
+    <section class="table-card">
+      <div class="table-header">
+        <h2>Data Pesanan</h2>
+        <button class="btn secondary small" id="refreshBtn">Refresh</button>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Pelanggan</th>
+              <th>Paket</th>
+              <th>Jadwal</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="bookingTable"></tbody>
+        </table>
+      </div>
+      <div id="adminEmpty" class="empty-state hidden">Belum ada data booking.</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 TriGame Rental PS</p>
+      <p>Dashboard sederhana untuk admin.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
