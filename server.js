@@ -11,6 +11,27 @@ const PACKAGES_FILE = path.join(DATA_DIR, 'packages.json');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+
+function verifyAdminAuth(req) {
+  const auth = req.headers.authorization;
+  if (!auth || !auth.startsWith('Basic ')) return false;
+  const [username, password] = Buffer.from(auth.slice(6), 'base64').toString('utf-8').split(':');
+  return username === ADMIN_USERNAME && password === ADMIN_PASSWORD;
+}
+
+function requireAdminAuth(req, res, next) {
+  if (verifyAdminAuth(req)) return next();
+  res.set('WWW-Authenticate', 'Basic realm="Admin Area"');
+  res.status(401).send('Unauthorized');
+}
+
+app.get(['/admin', '/admin.html'], requireAdminAuth, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 async function readJson(file, fallback) {
@@ -64,7 +85,7 @@ app.get('/api/packages', async (req, res, next) => {
   }
 });
 
-app.get('/api/bookings', async (req, res, next) => {
+app.get('/api/bookings', requireAdminAuth, async (req, res, next) => {
   try {
     const bookings = await readJson(BOOKINGS_FILE, []);
     const sorted = bookings.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
